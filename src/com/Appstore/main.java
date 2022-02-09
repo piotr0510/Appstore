@@ -9,6 +9,7 @@ public class main {
         projekty projekt = new projekty();
         pracownicy praca= new pracownicy();
 
+        boolean uko=false;
         int nndz=1;
         int zarobek=0;
         int dztyg=3;
@@ -30,9 +31,7 @@ public class main {
         int zus=2;
         boolean bug=false;
         int wypl=0;
-        double bonus=1.0;
-        double roboczoh=1.0;
-        //true;
+        boolean dzpracy=false;
         boolean za1 = false;
         boolean za2 = false;
         boolean za3 = false;
@@ -121,30 +120,37 @@ public class main {
             if(dztyg==1)
             {
                 System.out.println("Jest poniedziałek");
+                dzpracy=true;
             }
             if(dztyg==2)
             {
                 System.out.println("Jest wtorek");
+                dzpracy=true;
             }
             if(dztyg==3)
             {
                 System.out.println("Jest środa");
+                dzpracy=true;
             }
             if(dztyg==4)
             {
                 System.out.println("Jest czwartek");
+                dzpracy=true;
             }
             if(dztyg==5)
             {
                 System.out.println("Jest piątek");
+                dzpracy=true;
             }
             if(dztyg==6)
             {
                 System.out.println("Jest sobota");
+                dzpracy=false;
             }
             if(dztyg==7)
             {
                 System.out.println("Jest niedziela");
+                dzpracy=false;
             }
 
 
@@ -302,7 +308,7 @@ public class main {
             }
             else if(czynn.equals("3"))//programowanie
             {
-                if(current>=100)
+                if(uko==true)
                 {
                     System.out.println("Projekt Ukończony");
                 dzien--;
@@ -310,15 +316,17 @@ public class main {
                 }
                 else
                 {
-
-
-
+                    progres_front = progres_front - 50;
+                    progres_back = progres_back - 50;
+                    progres_baza = progres_baza - 50;
+                    progres_word = progres_word - 50;
+                    progres_pres = progres_pres - 50;
                 }
 
             }
             else if(czynn.equals("4"))//testowanie
             {
-                if (current>=100)
+                if (uko==true)
                 {
                      if(bug==false)
                      {
@@ -327,7 +335,37 @@ public class main {
                      else
                      {
                          System.out.println("Do poprawy");
-                         current=current-25;
+                         if(projekt.front[current]>0)
+                         {
+                             progres_front=progres_front+50;
+
+                         }
+                         if(projekt.back[current]>0)
+                         {
+                             progres_back=progres_back+50;
+
+                         }
+                         if(projekt.baza[current]>0)
+                         {
+                             progres_baza=progres_baza+50;
+
+                         }
+                         if(projekt.mobile[current]>0)
+                         {
+                             progres_mobile=progres_mobile+50;
+
+                         }
+                         if(projekt.word[current]>0)
+                         {
+                             progres_word=progres_word+50;
+
+                         }
+                         if(projekt.pres[current]>0)
+                         {
+                             progres_pres=progres_pres+50;
+
+                         }
+
                      }
                 }
                 else
@@ -342,7 +380,6 @@ public class main {
                 if (current>=100)
                 {
                     zaj=false;
-                    current=0;
                     kasa=kasa+1000;
                     zarobek=zarobek+1000/10;
                 }
@@ -711,7 +748,7 @@ public class main {
 
             //naliczanie postępu
 
-            if(nndz==1) {
+            if(dzpracy==true) {
                 if (za1 == true) {
                     progres_front = progres_front - praca.Marek[0];
                     progres_back = progres_back - praca.Marek[1];
@@ -761,6 +798,18 @@ public class main {
                     progres_pres = progres_pres - praca.Adam[5];
                 }
             }
+            if(
+            progres_front<=0&&
+            progres_back <=0&&
+            progres_baza <=0&&
+            progres_mobile <=0&&
+            progres_word <=0&&
+            progres_pres <=0
+            )
+            {
+                uko=true;
+            }
+
 
 
             if(timer_ogl>0)
