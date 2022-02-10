@@ -8,7 +8,9 @@ public class main {
         Scanner scan = new Scanner(System.in);
         projekty projekt = new projekty();
         pracownicy praca= new pracownicy();
-
+        int pracowniksp=0;
+        int pralicz=0;
+        int nieroblicz= 0;
         boolean podwyko1=false;
         boolean podwyko2=false;
         boolean podwyko3=false;
@@ -20,7 +22,6 @@ public class main {
         int rok=2020;
         int ex=0;
         int kasa=1000;
-        boolean mobile =false;
         int prog= 0;
         int sprze= 0;
         int test= 0;
@@ -56,6 +57,7 @@ public class main {
         int dzien=1;
         int timer_ogl=0;
         int timer_pro=0;
+        boolean oddanie=false;
 
 
 
@@ -248,15 +250,16 @@ public class main {
                         int x=0;
                         for(int i=0;i<5;i++)
                         {
-                            System.out.println((x+1)+" projekt");
+                            System.out.println((x+1)+" projekt-"+projekt.nazwa[current]);
 
                             x++;
+
                         }
-                        String proj = scan.nextLine();
+                        String proj1 = scan.nextLine();
                     }
                     if (jaoni.equals("2")) {
                         System.out.println("Wybierz projekt");
-                        String proj = scan.nextLine();
+                        String proj2 = scan.nextLine();
                     }
                 }
                 else {
@@ -300,6 +303,7 @@ public class main {
             }
             else if(czynn.equals("3"))//programowanie
             {
+                nieroblicz= 0;
                 if(uko==true)
                 {
                     System.out.println("Projekt Ukończony");
@@ -318,6 +322,7 @@ public class main {
             }
             else if(czynn.equals("4"))//testowanie
             {
+                nieroblicz= 0;
                 if (uko==true)
                 {
                      if(bug==false)
@@ -373,6 +378,7 @@ public class main {
                 {
 
                     zaj = false;
+                    oddanie=true;
                     int losowanie = (int)(Math.random() * 101);
                     if(opoz==false)
                     {
@@ -382,12 +388,20 @@ public class main {
                             if(losowanie>70)
                             {
                                 System.out.println("Zapłata opóźniona o tydzień ");
+                                if(projekt.poziom[current]=="duży")
+                                {
+                                    nieroblicz++;
+                                }
                             }
                             else
                             {
                                 kasa = kasa + projekt.zar[current];
                                 zarobek = zarobek + projekt.zar[current] / 10;
                                 System.out.println("Zarobiłeś "+projekt.zar[current]);
+                                if(projekt.poziom[current]=="duży")
+                                {
+                                    nieroblicz++;
+                                }
                             }
 
                         }
@@ -412,21 +426,35 @@ public class main {
                         }
                         if(bug==false)
                         {
+
                             if(projekt.klient[current]=="wymagający") {
 
                                 kasa = kasa + projekt.zar[current];
                                 zarobek = zarobek + projekt.zar[current] / 10;
                                 System.out.println("Zarobiłeś "+projekt.zar[current]);
+                                if(projekt.poziom[current]=="duży")
+                                {
+                                    nieroblicz++;
+                                }
                             }
                             if(projekt.klient[current]=="skrwy") {
 
                                 if(losowanie>70&&losowanie<95)
                                 {
                                     System.out.println("Zapłata opóźniona o tydzień ");
+                                    if(projekt.poziom[current]=="duży")
+                                    {
+                                        nieroblicz++;
+                                    }
+
                                 }
                                 if(losowanie>95&&losowanie>100)
                                 {
                                     System.out.println("Zapłata opóźniona o miesiąc ");
+                                    if(projekt.poziom[current]=="duży")
+                                    {
+                                        nieroblicz++;
+                                    }
                                 }
                                 if(losowanie==100)
                                 {
@@ -646,6 +674,7 @@ public class main {
                             za1 = true;
                             kasa = kasa - praca.Marek[6];
                             wypl=wypl+praca.Marek[6];
+                            prog++;
                         }
                     }
                     if(apl.equals("2"))
@@ -654,6 +683,7 @@ public class main {
                         za2 =true;
                         kasa=kasa-praca.Marcin[6];
                         wypl=wypl+praca.Marcin[6];}
+                        prog++;
                     }
                     if(apl.equals("3"))
                     {
@@ -661,6 +691,7 @@ public class main {
                         za3 =true;
                         kasa=kasa-praca.Jan[6];
                             wypl=wypl+praca.Jan[6];}
+                        prog++;
                     }
                     if(apl.equals("4"))
                     {
@@ -668,6 +699,7 @@ public class main {
                         za4 =true;
                         kasa=kasa-praca.Sławek[6];
                             wypl=wypl+praca.Sławek[6];}
+                        prog++;
                     }
                     if(apl.equals("5"))
                     {
@@ -675,6 +707,7 @@ public class main {
                         za5 =true;
                         kasa=kasa-praca.Kamil[6];
                             wypl=wypl+praca.Kamil[6];}
+                        prog++;
                     }
                     if(apl.equals("6"))
                     {
@@ -682,6 +715,7 @@ public class main {
                         za6 =true;
                         kasa=kasa-praca.Adam[6];
                             wypl=wypl+praca.Adam[6];}
+                        prog++;
                     }
                     if(apl.equals("7"))
                     {
@@ -689,6 +723,7 @@ public class main {
                             za7 = true;
                             kasa = kasa - wm;
                             wypl=wypl+wm;
+                            test++;
                         }
                     }
                     if(apl.equals("8"))
@@ -697,6 +732,7 @@ public class main {
                             za8 = true;
                             kasa = kasa - wa;
                             wypl=wypl+wa;
+                            test++;
                         }
                     }
                     if(apl.equals("9"))
@@ -705,6 +741,7 @@ public class main {
                             za9 = true;
                             kasa = kasa - wp;
                             wypl=wypl+wp;
+                            sprze++;
                         }
                     }
                     if(apl.equals("10"))
@@ -713,6 +750,8 @@ public class main {
                             za10 = true;
                             kasa = kasa - wg;
                             wypl=wypl+wg;
+                            sprze++;
+
                         }
                     }
                     if(apl.equals("11"))
@@ -820,21 +859,25 @@ public class main {
                 {
                     kasa=kasa-wm;
                     za7=false;
+                    test--;
                 }
                 if(zwo.equals("8")&&za8==true)
                 {
                     kasa=kasa-wa;
                     za8=false;
+                    test--;
                 }
                 if(zwo.equals("9")&&za9==true)
                 {
                     kasa=kasa-wp;
                     za9=false;
+                    sprze--;
                 }
                 if(zwo.equals("10")&&za10==true)
                 {
                     kasa=kasa-wg;
                     za10=false;
+                    sprze--;
                 }
 
 
@@ -891,6 +934,8 @@ public class main {
             //naliczanie postępu
 
             if(dzpracy==true) {
+                pralicz=0;
+
                 if (za1 == true) {
                     progres_front = progres_front - praca.Marek[0];
                     progres_back = progres_back - praca.Marek[1];
@@ -898,6 +943,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Marek[3];
                     progres_word = progres_word - praca.Marek[4];
                     progres_pres = progres_pres - praca.Marek[5];
+                    pralicz++;
                 }
                 if (za2 == true) {
                     progres_front = progres_front - praca.Marcin[0];
@@ -906,6 +952,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Marcin[3];
                     progres_word = progres_word - praca.Marcin[4];
                     progres_pres = progres_pres - praca.Marcin[5];
+                    pralicz++;
                 }
                 if (za3 == true) {
                     progres_front = progres_front - praca.Jan[0];
@@ -914,6 +961,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Jan[3];
                     progres_word = progres_word - praca.Jan[4];
                     progres_pres = progres_pres - praca.Jan[5];
+                    pralicz++;
                 }
                 if (za4 == true) {
                     progres_front = progres_front - praca.Sławek[0];
@@ -922,6 +970,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Sławek[3];
                     progres_word = progres_word - praca.Sławek[4];
                     progres_pres = progres_pres - praca.Sławek[5];
+                    pralicz++;
                 }
                 if (za5 == true) {
                     progres_front = progres_front - praca.Kamil[0];
@@ -930,6 +979,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Kamil[3];
                     progres_word = progres_word - praca.Kamil[4];
                     progres_pres = progres_pres - praca.Kamil[5];
+                    pralicz++;
                 }
                 if (za6 == true) {
                     progres_front = progres_front - praca.Adam[0];
@@ -938,8 +988,20 @@ public class main {
                     progres_mobile = progres_mobile - praca.Adam[3];
                     progres_word = progres_word - praca.Adam[4];
                     progres_pres = progres_pres - praca.Adam[5];
+                    pralicz++;
                 }
+
+                if(za9==true)
+                {
+                    projektyl++;
+                }
+                if(za9==true)
+                {
+                    projektyl++;
+                }
+
             }
+            //spr gotowości
             if(
             progres_front<=0&&
             progres_back <=0&&
@@ -954,19 +1016,106 @@ public class main {
             }
 
 
+            //testerzy
+            if(prog<=3&&test==1)
+            {
+                if (uko==true)
+                {
+                    if(bug==false)
+                    {
+                        System.out.println("Można wysyłać");
+                    }
+                    else
+                    {
+                        System.out.println("Do poprawy");
+                        if(projekt.front[current]>0)
+                        {
+                            progres_front=progres_front+50;
+
+                        }
+                        if(projekt.back[current]>0)
+                        {
+                            progres_back=progres_back+50;
+
+                        }
+                        if(projekt.baza[current]>0)
+                        {
+                            progres_baza=progres_baza+50;
+
+                        }
+                        if(projekt.mobile[current]>0)
+                        {
+                            progres_mobile=progres_mobile+50;
+
+                        }
+                        if(projekt.word[current]>0)
+                        {
+                            progres_word=progres_word+50;
+
+                        }
+                        if(projekt.pres[current]>0)
+                        {
+                            progres_pres=progres_pres+50;
+
+                        }
+
+                    }
+                }
+            }
+            if(prog<=6&&test==2)
+            {
+                if (uko==true)
+                {
+                    if(bug==false)
+                    {
+                        System.out.println("Można wysyłać");
+                    }
+                    else
+                    {
+                        System.out.println("Do poprawy");
+                        if(projekt.front[current]>0)
+                        {
+                            progres_front=progres_front+50;
+
+                        }
+                        if(projekt.back[current]>0)
+                        {
+                            progres_back=progres_back+50;
+
+                        }
+                        if(projekt.baza[current]>0)
+                        {
+                            progres_baza=progres_baza+50;
+
+                        }
+                        if(projekt.mobile[current]>0)
+                        {
+                            progres_mobile=progres_mobile+50;
+
+                        }
+                        if(projekt.word[current]>0)
+                        {
+                            progres_word=progres_word+50;
+
+                        }
+                        if(projekt.pres[current]>0)
+                        {
+                            progres_pres=progres_pres+50;
+
+                        }
+
+                    }
+                }
+            }
+
+
+
+
 
             if(timer_ogl>0)
             {
                 timer_ogl--;
             }
-            if(klient>0)
-            timer_pro++;
-            if(timer_pro>5)//Dodawanie projektów
-            {
-                timer_pro=0;
-                projektyl=projektyl+klient+sprze;
-            }
-
 
 
             if(projektyl==6)//limit projektów
@@ -1234,8 +1383,19 @@ public class main {
             }
             zarobek=0;
 
-
-
+            //koniec gry
+            if(pracowniksp<0)
+            {pracowniksp=0;}
+            pracowniksp=pracowniksp-1;
+            if(kasa>=10000&&nieroblicz>=3&&pracowniksp>=1)
+            {
+                System.out.println("Wygrałeś");
+                break;
+            }
+            if(oddanie==true)
+            {
+                pracowniksp=pracowniksp-1;
+            }
 
 
         }
