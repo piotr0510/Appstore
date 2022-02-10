@@ -10,6 +10,9 @@ public class projekty {
     int[] word = {0 ,0,0};
     int[] pres = {20,0,0 };
     int[] zar = {500,600,400 };
+    int[] kara = {100,200,100 };
+    String[] klient={"wyluzowany","wymagający","skrwy"};
+
     //1front-end
     //2backend
     //3baza danych
@@ -21,11 +24,12 @@ public class projekty {
 
 
 
-    String[] klient={"Lidl"};
+
+
     int[] d_o= {10};
     int[] m_o= {5};
     int[] r_o= {2022};
-    int[] kara={500};
+
     int[] wartosc= {1000};
     int []pla={10};
     String[] poziom = {"łatwy"};
