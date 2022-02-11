@@ -549,7 +549,7 @@ public class main {
                                 progres_pres=progres_pres+50;
 
                             }
-
+                            bug=false;
                         }
                     }
                     else
@@ -1252,6 +1252,10 @@ public class main {
 
                 uko=true;
                 System.out.println("Projekt ukończony");
+                if(randomurl1>75)
+                {
+                    bug=true;
+                }
             }
 
             //sprzedawcy
@@ -1351,7 +1355,7 @@ public class main {
                             progres_pres=progres_pres+50;
 
                         }
-
+                        bug=false;
                     }
                 }
             }
@@ -1396,6 +1400,7 @@ public class main {
                             progres_pres=progres_pres+50;
 
                         }
+                        bug=false;
 
                     }
                 }
