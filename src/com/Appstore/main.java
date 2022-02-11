@@ -9,13 +9,13 @@ public class main {
         projekty projekt = new projekty();
         pracownicy praca= new pracownicy();
         int pracowniksp=0;
-        int pralicz=0;
         int nieroblicz= 0;
-        boolean podwyko1=false;
-        boolean podwyko2=false;
-        boolean podwyko3=false;
+        int podwyko=0;
+        int wykotim1;
+        int wykotim2;
+        int wykotim3;
+        int timergl;
         boolean uko=false;
-        int nndz=1;
         int zarobek=0;
         int dztyg=3;
         int mie=1;
@@ -25,7 +25,6 @@ public class main {
         int prog= 0;
         int sprze= 0;
         int test= 0;
-        int projektyl=0;
         boolean zaj=true;
         boolean opoz=false;
         int current=0;
@@ -41,8 +40,8 @@ public class main {
         boolean za6 = false;
         boolean za7 = false;
         boolean za8 = false;
-        boolean za9 = true;
-        boolean za10 = true;
+        boolean za9 = false;
+        boolean za10 = false;
         double progres_front;
         double progres_back;
         double progres_baza;
@@ -54,10 +53,8 @@ public class main {
         int wa=500;
         int wp=500;
         int wg=500;
-        int klient=5;
         int dzien=1;
         int timer_ogl=0;
-        int timer_pro=0;
         boolean oddanie=false;
         int projekt1=-1;
         int projekt2=-1;
@@ -72,6 +69,27 @@ public class main {
         boolean znapro4= false;
         boolean znapro5= false;
 
+        //losowanie podwykonawców
+        int Basia[]={0,0,0,0,0,0};
+        int Olek[]={0,0,0,0,0,0};
+        int Kacper[]={0,0,0,0,0,0};
+        int licznik=0;
+        for(int i=0;i<6;i++)
+        {
+            int los1 = ThreadLocalRandom.current().nextInt(150, 350 + 1);
+            Basia[i]=los1;
+        }
+        for(int i=0;i<6;i++)
+        {
+            int los2 = ThreadLocalRandom.current().nextInt(100, 300 + 1);
+            Olek[i]=los2;
+        }
+        for(int i=0;i<6;i++)
+        {
+            int los3 = ThreadLocalRandom.current().nextInt(100, 250 + 1);
+            Olek[i]=los3;
+        }
+
 
 
         //wybór projektu
@@ -81,11 +99,36 @@ public class main {
 
 
         System.out.println("Wybierz projekt:");
+
         System.out.println("1 "+projekt.nazwa[randomNum1]);
+        System.out.println("Frontend: "+ projekt.front[randomNum1]);
+        System.out.println("Backend "+ projekt.back[randomNum1]);
+        System.out.println("Bazy Danych "+ projekt.baza[randomNum1]);
+        System.out.println("Mobile "+ projekt.mobile[randomNum1]);
+        System.out.println("Wordpress  "+ projekt.word[randomNum1]);
+        System.out.println("Prestashop  "+ projekt.pres[randomNum1]);
+        System.out.println("Dni na wykonanie  "+ projekt.dni[randomNum1]);
+
         System.out.println("2 "+projekt.nazwa[randomNum2]);
+        System.out.println("Frontend: "+ projekt.front[randomNum2]);
+        System.out.println("Backend "+ projekt.back[randomNum2]);
+        System.out.println("Bazy Danych "+ projekt.baza[randomNum2]);
+        System.out.println("Mobile "+ projekt.mobile[randomNum2]);
+        System.out.println("Wordpress  "+ projekt.word[randomNum2]);
+        System.out.println("Prestashop  "+ projekt.pres[randomNum2]);
+        System.out.println("Dni na wykonanie  "+ projekt.dni[randomNum2]);
+
         System.out.println("3 "+projekt.nazwa[randomNum3]);
+        System.out.println("Frontend: "+ projekt.front[randomNum3]);
+        System.out.println("Backend "+ projekt.back[randomNum3]);
+        System.out.println("Bazy Danych "+ projekt.baza[randomNum3]);
+        System.out.println("Mobile "+ projekt.mobile[randomNum3]);
+        System.out.println("Wordpress  "+ projekt.word[randomNum3]);
+        System.out.println("Prestashop  "+ projekt.pres[randomNum3]);
+        System.out.println("Dni na wykonanie  "+ projekt.dni[randomNum3]);
 
         String pr = scan.nextLine();
+
 
 
         if(pr.equals("1"))
@@ -117,7 +160,7 @@ public class main {
         progres_mobile=projekt.mobile[current];
         progres_word=projekt.word[current];
         progres_pres=projekt.pres[current];
-
+        timergl=projekt.dni[current];
 
 
 
@@ -239,7 +282,11 @@ public class main {
             System.out.println("6-Zatrudnij");
             System.out.println("7-Zwolnij");
             System.out.println("8-Rozliczenie z ZUS, jeszcze "+zus+" dni w tym miesiącu");
-            System.out.println("9-Staty");
+            System.out.println("9-Statystyki");
+            if(zaj==true)
+            {
+                System.out.println("10-Postęp projektu");
+            }
             System.out.println("end-Koniec");
 
 
@@ -261,6 +308,7 @@ public class main {
 
                     if (jaoni.equals("1"))
                     {
+                        opoz=false;
                         System.out.println("Wybierz projekt");
 
 
@@ -306,13 +354,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt2]);
                                     current=projekt2;
                             projekt2=-1;
+                            zaj=true;
+                            uko=false;
                             if(znapro2==true&&projekt.poziom[current]=="duży")
+
                             {
-                                zaj=true;
-                                uko=false;
                                 pracowniksp=3;
                                 znapro2 = false;
-
                             }
                         }
                         if(proj1.equals("3")&&projekt3!=-1)
@@ -364,6 +412,7 @@ public class main {
                         progres_mobile=projekt.mobile[current];
                         progres_word=projekt.word[current];
                         progres_pres=projekt.pres[current];
+                        timergl=projekt.dni[current];
 
 
 
@@ -371,8 +420,28 @@ public class main {
                     }
                     if (jaoni.equals("2"))
                     {
-                        System.out.println("Wybierz projekt");
-                        String proj2 = scan.nextLine();
+                        System.out.println("1-Basia najlepsza uczennica-pobiera 75% ");
+                        System.out.println("2-Olek Sredni uczeń-pobiera 60%, 10% na buga ");
+                        System.out.println("3-Kacper słabiak-pobiera 50%, 20% na buga , 20% na spóżnienie");
+
+                        String wykonawca = scan.nextLine();
+
+                        if (wykonawca.equals("1"))
+                        {
+                             wykotim1=0;
+                        }
+                        if (wykonawca.equals("2"))
+                        {
+                             wykotim2=0;
+                        }
+                        if (wykonawca.equals("3"))
+                        {
+                             wykotim3=0;
+                        }
+
+
+
+
                     }
                         }
                 else {
@@ -429,20 +498,13 @@ public class main {
                 else if(czynn.equals("3"))//programowanie
                 {
                     nieroblicz= 0;
-                    if(uko==true)
-                    {
-                        System.out.println("Projekt Ukończony");
-                        dzien--;
-                        dztyg--;
-                    }
-                    else
-                    {
+
                         progres_front = progres_front - 50;
                         progres_back = progres_back - 50;
                         progres_baza = progres_baza - 50;
                         progres_word = progres_word - 50;
                         progres_pres = progres_pres - 50;
-                    }
+
 
                 }
                 else if(czynn.equals("4"))//testowanie
@@ -452,7 +514,7 @@ public class main {
                     {
                         if(bug==false)
                         {
-                            System.out.println("Można wysyłać");
+                            System.out.println("Brak bugów");
                         }
                         else
                         {
@@ -674,6 +736,7 @@ public class main {
                             }
                         }
                         zrobione=true;
+                        opoz=false;
                     }
                     if(uko==false&&zaj == true)
                     {
@@ -1016,26 +1079,25 @@ public class main {
                     System.out.println("Mam "+prog+" programistów");
                     System.out.println("Mam "+sprze+" sprzedawców");
                     System.out.println("Mam "+test+" testerów");
-                    System.out.println("Mam "+projektyl+" projektów");
                     System.out.println("Wypłacam "+wypl+" miesięcznie");
 
-                    System.out.println("pracowniksp "+pracowniksp+" "+nieroblicz+uko+zaj);
+                    System.out.println("Czy projekt jest opóźniony: "+opoz);
+                    System.out.println("Czy projekt jest skończony: "+uko);
+                    System.out.println("Czy jestem zajęty "+zaj);
+                    System.out.println("Licznik dni projektu sprzedawcy (3-0)"+pracowniksp);
+                    System.out.println("Duże projekty skończone bezemnie: "+nieroblicz);
 
-                    System.out.println("Front ma  "+progres_front+" na "+ projekt.front[current]);
-                    System.out.println("Back ma  "+progres_back+" na "+ projekt.back[current]);
-                    System.out.println("Baza ma  "+progres_baza+" na "+ projekt.baza[current]);
-                    System.out.println("Mobile ma  "+progres_mobile+" na "+ projekt.mobile[current]);
-                    System.out.println("Word ma  "+progres_word+" na "+ projekt.word[current]);
-                    System.out.println("Pres ma  "+progres_pres+" na "+ projekt.pres[current]);
+                }
+                else if(czynn.equals("10")&&zaj==true)//Postęp projektu
+            {
+                System.out.println("Frontend ma  "+progres_front+" na "+ projekt.front[current]);
+                System.out.println("Backend ma  "+progres_back+" na "+ projekt.back[current]);
+                System.out.println("Baza danych ma  "+progres_baza+" na "+ projekt.baza[current]);
+                System.out.println("Mobile ma  "+progres_mobile+" na "+ projekt.mobile[current]);
+                System.out.println("Wordpress ma  "+progres_word+" na "+ projekt.word[current]);
+                System.out.println("Prestashop ma  "+progres_pres+" na "+ projekt.pres[current]);
 
-                    dzien--;
-                    dztyg--;
-                }
-                else
-                {
-                    dzien--;
-                    dztyg--;
-                }
+            }
 
 
 
@@ -1110,7 +1172,7 @@ public class main {
             }
 
             if(dzpracy==true) {
-                pralicz=0;
+
 
                 if (za1 == true) {
                     progres_front = progres_front - praca.Marek[0];
@@ -1119,7 +1181,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Marek[3];
                     progres_word = progres_word - praca.Marek[4];
                     progres_pres = progres_pres - praca.Marek[5];
-                    pralicz++;
+
                 }
                 if (za2 == true) {
                     progres_front = progres_front - praca.Marcin[0];
@@ -1128,7 +1190,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Marcin[3];
                     progres_word = progres_word - praca.Marcin[4];
                     progres_pres = progres_pres - praca.Marcin[5];
-                    pralicz++;
+
                 }
                 if (za3 == true) {
                     progres_front = progres_front - praca.Jan[0];
@@ -1137,7 +1199,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Jan[3];
                     progres_word = progres_word - praca.Jan[4];
                     progres_pres = progres_pres - praca.Jan[5];
-                    pralicz++;
+
                 }
                 if (za4 == true) {
                     progres_front = progres_front - praca.Sławek[0];
@@ -1146,7 +1208,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Sławek[3];
                     progres_word = progres_word - praca.Sławek[4];
                     progres_pres = progres_pres - praca.Sławek[5];
-                    pralicz++;
+
                 }
                 if (za5 == true) {
                     progres_front = progres_front - praca.Kamil[0];
@@ -1155,7 +1217,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Kamil[3];
                     progres_word = progres_word - praca.Kamil[4];
                     progres_pres = progres_pres - praca.Kamil[5];
-                    pralicz++;
+
                 }
                 if (za6 == true) {
                     progres_front = progres_front - praca.Adam[0];
@@ -1164,7 +1226,7 @@ public class main {
                     progres_mobile = progres_mobile - praca.Adam[3];
                     progres_word = progres_word - praca.Adam[4];
                     progres_pres = progres_pres - praca.Adam[5];
-                    pralicz++;
+
                 }
 
                 if(za9==true)
@@ -1189,29 +1251,30 @@ public class main {
             {
 
                 uko=true;
+                System.out.println("Projekt ukończony");
             }
 
             //sprzedawcy
             if(liczsp1>=5) {
                 int randomzna1 = (int) (Math.random() * 3);
                 if (projekt1 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Piotr znalazł projekt "+projekt.nazwa[randomzna1]);
                     znapro1=true;
                     projekt1 = randomzna1;
                 } else if (projekt2 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Piotr znalazł projekt "+projekt.nazwa[randomzna1]);
                     znapro2=true;
                     projekt2 = randomzna1;
                 } else if (projekt3 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Piotr znalazł projekt "+projekt.nazwa[randomzna1]);
                     znapro3=true;
                     projekt3 = randomzna1;
                 } else if (projekt4 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Piotr znalazł projekt "+projekt.nazwa[randomzna1]);
                     znapro4=true;
                     projekt4 = randomzna1;
                 } else if (projekt5 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Piotr znalazł projekt "+projekt.nazwa[randomzna1]);
                     znapro5=true;
                     projekt5 = randomzna1;
                 }
@@ -1220,23 +1283,23 @@ public class main {
             if(liczsp2>=5) {
                 int randomzna2 = (int) (Math.random() * 3);
                 if (projekt1 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Gabriel znalazł projekt "+projekt.nazwa[randomzna2]);
                     znapro1=true;
                     projekt1 = randomzna2;
                 } else if (projekt2 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Gabriel znalazł projekt "+projekt.nazwa[randomzna2]);
                     znapro2=true;
                     projekt2 = randomzna2;
                 } else if (projekt3 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Gabriel znalazł projekt "+projekt.nazwa[randomzna2]);
                     znapro3=true;
                     projekt3 = randomzna2;
                 } else if (projekt4 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Gabriel znalazł projekt "+projekt.nazwa[randomzna2]);
                     znapro4=true;
                     projekt4 = randomzna2;
                 } else if (projekt5 == -1) {
-                    System.out.println("Znaleziono projekt ");
+                    System.out.println("Gabriel znalazł projekt "+projekt.nazwa[randomzna2]);
                     znapro5=true;
                     projekt5 = randomzna2;
                 }
@@ -1248,12 +1311,12 @@ public class main {
             //testerzy
             if(prog<=3&&test==1)
             {
-                if (uko==true&&current!=20)
+                if (uko==true&&current!=-1)
                 {
 
                     if(bug==false)
                     {
-                        System.out.println("Można wysyłać");
+                        System.out.println("Brak Bugów");
                     }
                     else
                     {
@@ -1298,7 +1361,7 @@ public class main {
                 {
                     if(bug==false)
                     {
-                        System.out.println("Można wysyłać");
+                        System.out.println("Brak Bugów");
                     }
                     else
                     {
@@ -1341,17 +1404,15 @@ public class main {
 
 
 
-            if(timer_ogl>0)
+            //opóźnienie
+            timergl--;
+            if(timergl<=0)
             {
-                timer_ogl--;
+                opoz=true;
             }
 
 
-            if(projektyl==6)//limit projektów
-            {
-                projektyl--;
-            }
-
+           //dzien tyg
             dzien++;
 
             dztyg++;
@@ -1627,6 +1688,12 @@ public class main {
             if(kasa>=10000&&nieroblicz>=3&&pracowniksp>=1)
             {
                 System.out.println("Wygrałeś");
+                break;
+            }
+
+            if(kasa<0)
+            {
+                System.out.println("Jesteś nie wypłacalny");
                 break;
             }
 
