@@ -41,14 +41,15 @@ public class main {
         boolean za6 = false;
         boolean za7 = false;
         boolean za8 = false;
-        boolean za9 = false;
-        boolean za10 = false;
+        boolean za9 = true;
+        boolean za10 = true;
         double progres_front;
         double progres_back;
         double progres_baza;
         double progres_mobile;
         double progres_word;
         double progres_pres;
+        boolean zrobione=false;
         int wm=500;
         int wa=500;
         int wp=500;
@@ -63,6 +64,13 @@ public class main {
         int projekt3=-1;
         int projekt4=-1;
         int projekt5=-1;
+        int liczsp1=0;
+        int liczsp2=0;
+        boolean znapro1= false;
+        boolean znapro2= false;
+        boolean znapro3= false;
+        boolean znapro4= false;
+        boolean znapro5= false;
 
 
 
@@ -244,83 +252,166 @@ public class main {
             {
                 ex=1;
             }
-            else if(czynn.equals("1"))//nowy projekt
-            {
+                else if(czynn.equals("1"))//nowy projekt
+                {
                 if(zaj==false) {
                     System.out.println("1-Dla firmy ");
                     System.out.println("2-Dla podwykonawcy ");
                     String jaoni = scan.nextLine();
 
-                    if (jaoni.equals("1")) {
+                    if (jaoni.equals("1"))
+                    {
                         System.out.println("Wybierz projekt");
 
 
                         if(projekt1!=-1)
                         {
-                            System.out.println("1- "+projekt.nazwa[projekt1]
+                            System.out.println("1- "+projekt.nazwa[projekt1]);
                         }
                         if(projekt2!=-1)
                         {
-                            System.out.println("2- "+projekt.nazwa[projekt2]
+                            System.out.println("2- "+projekt.nazwa[projekt2]);
                         }
                         if(projekt3!=-1)
                         {
-                            System.out.println("3- "+projekt.nazwa[projekt3]
+                            System.out.println("3- "+projekt.nazwa[projekt3]);
+                        }
+                        if(projekt4!=-1)
+                        {
+                            System.out.println("4- "+projekt.nazwa[projekt4]);
+                        }
+                        if(projekt5!=-1)
+                        {
+                            System.out.println("5- "+projekt.nazwa[projekt5]);
                         }
 
                         String proj1 = scan.nextLine();
 
                         if(proj1.equals("1")&&projekt1!=-1)
                         {
-                            System.out.println("Wybrałeś "+projekt.nazwa[projekt1]
-                                    current
-        }
-    }
-                    if (jaoni.equals("2")) {
-        System.out.println("Wybierz projekt");
-        String proj2 = scan.nextLine();
-    }
-}
+                            System.out.println("Wybrałeś "+projekt.nazwa[projekt1]);
+                                    current=projekt1;
+                                    projekt1=-1;
+                                    if(znapro1==true)
+                                    {
+                                        pracowniksp++;
+                                        znapro1 = false;
+                                    }
+                        }
+                        if(proj1.equals("2")&&projekt2!=-1)
+                        {
+                            System.out.println("Wybrałeś "+projekt.nazwa[projekt2]);
+                                    current=projekt2;
+                            projekt2=-1;
+                            if(znapro2==true)
+                            {
+                                pracowniksp++;
+                                znapro2 = false;
+                            }
+                        }
+                        if(proj1.equals("3")&&projekt3!=-1)
+                        {
+                            System.out.println("Wybrałeś "+projekt.nazwa[projekt3]);
+                                    current=projekt3;
+                            projekt3=-1;
+                            if(znapro3==true)
+                            {
+                                pracowniksp++;
+                                znapro3 = false;
+                            }
+                        }
+                        if(proj1.equals("4")&&projekt4!=-1)
+                        {
+                            System.out.println("Wybrałeś "+projekt.nazwa[projekt4]);
+                            current=projekt4;
+                            projekt4=-1;
+                            if(znapro4==true)
+                            {
+                                pracowniksp++;
+                                znapro4 = false;
+                            }
+                        }
+                        if(proj1.equals("5")&&projekt5!=-1)
+                        {
+                            System.out.println("Wybrałeś "+projekt.nazwa[projekt5]);
+                            current=projekt5;
+                            projekt5=-1;
+                            if(znapro5==true)
+                            {
+                                pracowniksp++;
+                                znapro5 = false;
+                            }
+                        }
+
+                        progres_front=projekt.front[current];
+                        progres_back=projekt.back[current];
+                        progres_baza=projekt.baza[current];
+                        progres_mobile=projekt.mobile[current];
+                        progres_word=projekt.word[current];
+                        progres_pres=projekt.pres[current];
+
+
+
+
+                    }
+                    if (jaoni.equals("2"))
+                    {
+                        System.out.println("Wybierz projekt");
+                        String proj2 = scan.nextLine();
+                    }
+                        }
                 else {
-                        System.out.println("Jesteś zajęty projektem");
-                        }
+                    System.out.println("Jesteś zajęty projektem");
+                }
 
-                        }
-                        else if(czynn.equals("2"))//szukanie klientów
-                        {
-                        System.out.println("1-Szukaj klienta");
-                        System.out.println("2-cofnij");
-                        String szuk = scan.nextLine();
-                        if(szuk.equals("1"))
-                        {
-                        if(randomNum>33)
-                        {
+            }
+                else if(czynn.equals("2"))//szukanie klientów
+                {
 
+                            if(randomNum>=33)
+                            {
 
-                        }
-                        if(randomNum>66)
-                        {
+                                int randomzna = (int)(Math.random() * 3);
+                                if(projekt1==-1)
+                                {
+                                    System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
+                                    projekt1 = randomzna;
+                                }
+                                else if (projekt2==-1)
+                                {
+                                    System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
+                                    projekt2 = randomzna;
+                                }
+                                else if (projekt3==-1)
+                                {
+                                    System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
+                                    projekt3 = randomzna;
+                                }
+                                else if (projekt4==-1)
+                                {
+                                    System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
+                                    projekt4 = randomzna;
+                                }
+                                else if (projekt5==-1)
+                                {
+                                    System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
+                                    projekt5 = randomzna;
+                                }
+                                else if(projekt1!=-1&&projekt2!=-1&&projekt3!=-1&&projekt4!=-1&&projekt5!=-1)
+                                {
+                                    System.out.println("Baza pełna");
+                                }
 
+                            }
+                            if(randomNum<33)
+                            {
+                                System.out.println("Nic nie znalazłeś");
 
-                        }
-                        if(randomNum<33)
-        {
+                            }
 
 
         }
-        System.out.println("Znalazłeś klienta");
-        System.out.println(" ");
-
-        }
-
-        if(szuk.equals("3"))
-        {
-        dzien--;
-        dztyg--;
-        }
-
-        }
-            else if(czynn.equals("3"))//programowanie
+                else if(czynn.equals("3"))//programowanie
                 {
                     nieroblicz= 0;
                     if(uko==true)
@@ -395,9 +486,10 @@ public class main {
                 {
                     if (uko==true&&zaj == true)
                     {
-
                         zaj = false;
                         oddanie=true;
+
+
                         int losowanie = (int)(Math.random() * 101);
                         if(opoz==false)
                         {
@@ -567,6 +659,7 @@ public class main {
                                 }
                             }
                         }
+                        zrobione=true;
                     }
                     if(uko==false&&zaj == true)
                     {
@@ -581,13 +674,8 @@ public class main {
                     System.out.println("Mam "+sprze+" sprzedawców");
                     System.out.println("Mam "+test+" testerów");
 
-                    System.out.println("Co robisz");
-                    System.out.println("1-Zobacz aplikantów");
-                    System.out.println("2-cofnij");
-                    String zatr = scan.nextLine();
 
-                    if(zatr.equals("1"))
-                    {
+
                         System.out.println("Zatrudnij aplikanta (opłata wynagrodzenia z góry) ");
                         int contr=1;
 
@@ -773,19 +861,6 @@ public class main {
 
                             }
                         }
-                        if(apl.equals("11"))
-                        {
-                            dzien--;
-                            dztyg--;
-                        }
-
-
-                    }
-                    if(zatr.equals("2"))
-                    {
-                        dzien--;
-                        dztyg--;
-                    }
 
                 }
                 else if(czynn.equals("7"))//zwalnianie
@@ -927,9 +1002,10 @@ public class main {
                     System.out.println("Mam "+prog+" programistów");
                     System.out.println("Mam "+sprze+" sprzedawców");
                     System.out.println("Mam "+test+" testerów");
-                    System.out.println("Mam "+klient+" klientów");
                     System.out.println("Mam "+projektyl+" projektów");
                     System.out.println("Wypłacam "+wypl+" miesięcznie");
+
+                    System.out.println("pracowniksp "+pracowniksp+" "+nieroblicz);
 
                     System.out.println("Front ma  "+progres_front+" na "+ projekt.front[current]);
                     System.out.println("Back ma  "+progres_back+" na "+ projekt.back[current]);
@@ -953,58 +1029,68 @@ public class main {
                     //naliczanie postępu + urlopy
 
                     int randomurl1 = ThreadLocalRandom.current().nextInt(1, 100 + 1);
-                    int randomurl2 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+                    int randomurl2 = ThreadLocalRandom.current().nextInt(1, 6 + 1);
                     if(randomurl1>=95)
                     {
-                        if(randomurl2==1)
+                        if(randomurl2==1&&za1==true)
                         {
-                            za1 = false;
+                            progres_front = progres_front + praca.Marek[0];
+                            progres_back = progres_back + praca.Marek[1];
+                            progres_baza = progres_baza + praca.Marek[2];
+                            progres_mobile = progres_mobile + praca.Marek[3];
+                            progres_word = progres_word + praca.Marek[4];
+                            progres_pres = progres_pres + praca.Marek[5];
                             System.out.println("Marek bierze dzień urlopu");
                         }
-                        if(randomurl2==2)
+                        if(randomurl2==2&&za2==true)
                         {
-                            za2 = false;
+                            progres_front = progres_front + praca.Marcin[0];
+                            progres_back = progres_back + praca.Marcin[1];
+                            progres_baza = progres_baza + praca.Marcin[2];
+                            progres_mobile = progres_mobile + praca.Marcin[3];
+                            progres_word = progres_word + praca.Marcin[4];
+                            progres_pres = progres_pres + praca.Marcin[5];
                             System.out.println("Marcin bierze dzień urlopu");
                         }
-                        if(randomurl2==3)
+                        if(randomurl2==3&&za3==true)
                         {
-                            za3 = false;
+                            progres_front = progres_front + praca.Jan[0];
+                            progres_back = progres_back + praca.Jan[1];
+                            progres_baza = progres_baza + praca.Jan[2];
+                            progres_mobile = progres_mobile + praca.Jan[3];
+                            progres_word = progres_word + praca.Jan[4];
+                            progres_pres = progres_pres + praca.Jan[5];
                             System.out.println("Jan bierze dzień urlopu");
                         }
-                        if(randomurl2==4)
+                        if(randomurl2==4&&za4==true)
                         {
-                            za4 = false;
+                            progres_front = progres_front + praca.Sławek[0];
+                            progres_back = progres_back + praca.Sławek[1];
+                            progres_baza = progres_baza + praca.Sławek[2];
+                            progres_mobile = progres_mobile + praca.Sławek[3];
+                            progres_word = progres_word + praca.Sławek[4];
+                            progres_pres = progres_pres + praca.Sławek[5];
                             System.out.println("Sławek bierze dzień urlopu");
                         }
-                        if(randomurl2==5)
+                        if(randomurl2==5&&za5==true)
                         {
-                            za5 = false;
+                            progres_front = progres_front + praca.Kamil[0];
+                            progres_back = progres_back + praca.Kamil[1];
+                            progres_baza = progres_baza + praca.Kamil[2];
+                            progres_mobile = progres_mobile + praca.Kamil[3];
+                            progres_word = progres_word + praca.Kamil[4];
+                            progres_pres = progres_pres + praca.Kamil[5];
                             System.out.println("Kamil bierze dzień urlopu");
                         }
-                        if(randomurl2==6)
+                        if(randomurl2==6&&za6==true)
                         {
-                            za6 = false;
+                            progres_front = progres_front + praca.Adam[0];
+                            progres_back = progres_back + praca.Adam[1];
+                            progres_baza = progres_baza + praca.Adam[2];
+                            progres_mobile = progres_mobile + praca.Adam[3];
+                            progres_word = progres_word + praca.Adam[4];
+                            progres_pres = progres_pres + praca.Adam[5];
                             System.out.println("Adam bierze dzień urlopu");
-                        }
-                        if(randomurl2==7)
-                        {
-                            za7 = false;
-                            System.out.println("Magda bierze dzień urlopu");
-                        }
-                        if(randomurl2==8)
-                        {
-                            za8 = false;
-                            System.out.println("Asia bierze dzień urlopu");
-                        }
-                        if(randomurl2==9)
-                        {
-                            za9 = false;
-                            System.out.println("Piotr bierze dzień urlopu");
-                        }
-                        if(randomurl2==10)
-                        {
-                            za10 = false;
-                            System.out.println("Gabriel bierze dzień urlopu");
                         }
 
             }
@@ -1069,11 +1155,11 @@ public class main {
 
                 if(za9==true)
                 {
-                    projektyl++;
+                    liczsp1++;
                 }
                 if(za9==true)
                 {
-                    projektyl++;
+                    liczsp2++;
                 }
 
             }
@@ -1091,11 +1177,110 @@ public class main {
                 uko=true;
             }
 
+            //sprzedawcy
+            if(liczsp1>=5) {
+                int randomzna1 = (int) (Math.random() * 3);
+                if (projekt1 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro1=true;
+                    projekt1 = randomzna1;
+                } else if (projekt2 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro2=true;
+                    projekt2 = randomzna1;
+                } else if (projekt3 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro3=true;
+                    projekt3 = randomzna1;
+                } else if (projekt4 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro4=true;
+                    projekt4 = randomzna1;
+                } else if (projekt5 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro5=true;
+                    projekt5 = randomzna1;
+                }
+                liczsp1=0;
+            }
+            if(liczsp2>=5) {
+                int randomzna2 = (int) (Math.random() * 3);
+                if (projekt1 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro1=true;
+                    projekt1 = randomzna2;
+                } else if (projekt2 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro2=true;
+                    projekt2 = randomzna2;
+                } else if (projekt3 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro3=true;
+                    projekt3 = randomzna2;
+                } else if (projekt4 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro4=true;
+                    projekt4 = randomzna2;
+                } else if (projekt5 == -1) {
+                    System.out.println("Znaleziono projekt ");
+                    znapro5=true;
+                    projekt5 = randomzna2;
+                }
+
+                liczsp2=0;
+            }
+
 
             //testerzy
             if(prog<=3&&test==1)
             {
-                if (uko==true)
+                if (uko==true&&current!=20)
+                {
+
+                    if(bug==false)
+                    {
+                        System.out.println("Można wysyłać");
+                    }
+                    else
+                    {
+                        System.out.println("Do poprawy");
+                        if(projekt.front[current]>0)
+                        {
+                            progres_front=progres_front+50;
+
+                        }
+                        if(projekt.back[current]>0)
+                        {
+                            progres_back=progres_back+50;
+
+                        }
+                        if(projekt.baza[current]>0)
+                        {
+                            progres_baza=progres_baza+50;
+
+                        }
+                        if(projekt.mobile[current]>0)
+                        {
+                            progres_mobile=progres_mobile+50;
+
+                        }
+                        if(projekt.word[current]>0)
+                        {
+                            progres_word=progres_word+50;
+
+                        }
+                        if(projekt.pres[current]>0)
+                        {
+                            progres_pres=progres_pres+50;
+
+                        }
+
+                    }
+                }
+            }
+            if(prog<=6&&test==20)
+            {
+                if (uko==true&&current!=-1)
                 {
                     if(bug==false)
                     {
@@ -1138,109 +1323,8 @@ public class main {
                     }
                 }
             }
-            if(prog<=6&&test==2)
-            {
-                if (uko==true)
-                {
-                    if(bug==false)
-                    {
-                        System.out.println("Można wysyłać");
-                    }
-                    else
-                    {
-                        System.out.println("Do poprawy");
-                        if(projekt.front[current]>0)
-                        {
-                            progres_front=progres_front+50;
-
-                        }
-                        if(projekt.back[current]>0)
-                        {
-                            progres_back=progres_back+50;
-
-                        }
-                        if(projekt.baza[current]>0)
-                        {
-                            progres_baza=progres_baza+50;
-
-                        }
-                        if(projekt.mobile[current]>0)
-                        {
-                            progres_mobile=progres_mobile+50;
-
-                        }
-                        if(projekt.word[current]>0)
-                        {
-                            progres_word=progres_word+50;
-
-                        }
-                        if(projekt.pres[current]>0)
-                        {
-                            progres_pres=progres_pres+50;
-
-                        }
-
-                    }
-                }
-            }
 
 
-            //odwracanie urlopu
-
-            if(randomurl1>=95)
-            {
-                if(randomurl2==1)
-                {
-                    za1 = true;
-
-                }
-                if(randomurl2==2)
-                {
-                    za2 = true;
-
-                }
-                if(randomurl2==3)
-                {
-                    za3 =  true;
-
-                }
-                if(randomurl2==4)
-                {
-                    za4 =  true;
-
-                }
-                if(randomurl2==5)
-                {
-                    za5 =  true;
-
-                }
-                if(randomurl2==6)
-                {
-                    za6 =  true;
-
-                }
-                if(randomurl2==7)
-                {
-                    za7 =  true;
-
-                }
-                if(randomurl2==8)
-                {
-                    za8 =  true;
-
-                }
-                if(randomurl2==9)
-                {
-                    za9 =  true;
-
-                }
-                if(randomurl2==10)
-                {
-                    za10 =  true;
-
-                }
-
-            }
 
 
             if(timer_ogl>0)

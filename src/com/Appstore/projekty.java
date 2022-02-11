@@ -2,16 +2,16 @@ package com.Appstore;
 
 public class projekty {
 
-    String[] nazwa={"Strona dla urzędu","Portal aukcyjny","Sklep z zabawkami"};
-    int[] front = {100,200,50 };
-    int[] back = {50,25,60 };
-    int[] baza = {0,25,45 };
-    int[] mobile = {0,0,0 };
-    int[] word = {0 ,0,0};
-    int[] pres = {20,0,0 };
-    int[] zar = {500,600,400 };
-    int[] kara = {100,200,100 };
-    String[] klient={"wyluzowany","wymagający","skrwy"};
+    String[] nazwa={"Strona dla urzędu","Portal aukcyjny","Sklep z zabawkami","","","","","","","","","","","","","","","","","",""};
+    int[] front = {100,200,50 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] back = {50,25,60 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] baza = {0,25,45 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] mobile = {0,0,0 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] word = {0 ,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] pres = {20,0,0 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] zar = {500000,600000,400000 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int[] kara = {100,200,100 ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    String[] klient={"wyluzowany","wymagający","skrwy","","","","","","","","","","","","","","","","","",""};
 
 
     //1front-end
@@ -30,7 +30,7 @@ public class projekty {
     int[] d_o= {10};
     int[] m_o= {5};
     int[] r_o= {2022};
-    String[] poziom = {"łatwy","łatwy","łatwy","duży"};
+    String[] poziom = {"duży","duży","duży","duży","","","","","","","","","","","","","","","","","",""};
     //(łatwy/średni/złożony)
     int mies[]={31,28,31,30,31,30,31,31,30,31,30,31};
 }
