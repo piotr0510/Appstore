@@ -292,10 +292,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt1]);
                                     current=projekt1;
                                     projekt1=-1;
-                                    if(znapro1==true)
+                            zaj=true;
+                            uko=false;
+                                    if(znapro1==true&&projekt.poziom[current]=="duży")
                                     {
-                                        pracowniksp++;
+                                        pracowniksp=3;
                                         znapro1 = false;
+
                                     }
                         }
                         if(proj1.equals("2")&&projekt2!=-1)
@@ -303,10 +306,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt2]);
                                     current=projekt2;
                             projekt2=-1;
-                            if(znapro2==true)
+                            if(znapro2==true&&projekt.poziom[current]=="duży")
                             {
-                                pracowniksp++;
+                                zaj=true;
+                                uko=false;
+                                pracowniksp=3;
                                 znapro2 = false;
+
                             }
                         }
                         if(proj1.equals("3")&&projekt3!=-1)
@@ -314,10 +320,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt3]);
                                     current=projekt3;
                             projekt3=-1;
-                            if(znapro3==true)
+                            zaj=true;
+                            uko=false;
+                            if(znapro3==true&&projekt.poziom[current]=="duży")
                             {
-                                pracowniksp++;
+                                pracowniksp=3;
                                 znapro3 = false;
+
                             }
                         }
                         if(proj1.equals("4")&&projekt4!=-1)
@@ -325,10 +334,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt4]);
                             current=projekt4;
                             projekt4=-1;
-                            if(znapro4==true)
+                            zaj=true;
+                            uko=false;
+                            if(znapro4==true&&projekt.poziom[current]=="duży")
                             {
-                                pracowniksp++;
+                                pracowniksp=3;
                                 znapro4 = false;
+
                             }
                         }
                         if(proj1.equals("5")&&projekt5!=-1)
@@ -336,10 +348,13 @@ public class main {
                             System.out.println("Wybrałeś "+projekt.nazwa[projekt5]);
                             current=projekt5;
                             projekt5=-1;
-                            if(znapro5==true)
+                            zaj=true;
+                            uko=false;
+                            if(znapro5==true&&projekt.poziom[current]=="duży")
                             {
-                                pracowniksp++;
+                                pracowniksp=3;
                                 znapro5 = false;
+
                             }
                         }
 
@@ -489,7 +504,6 @@ public class main {
                         zaj = false;
                         oddanie=true;
 
-
                         int losowanie = (int)(Math.random() * 101);
                         if(opoz==false)
                         {
@@ -504,7 +518,7 @@ public class main {
                                         nieroblicz++;
                                     }
                                 }
-                                else
+                                if(losowanie<=70)
                                 {
                                     kasa = kasa + projekt.zar[current];
                                     zarobek = zarobek + projekt.zar[current] / 10;
@@ -587,7 +601,7 @@ public class main {
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
                                     }
-                                    else
+                                    if(losowanie<=70)
                                     {
                                         kasa = kasa + projekt.zar[current];
                                         zarobek = zarobek + projekt.zar[current] / 10;
@@ -596,7 +610,7 @@ public class main {
 
                                 }
                             }
-                            else
+                            if(losowanie<=80)
                             {
 
                                 if(projekt.klient[current]=="wyluzowany") {
@@ -605,7 +619,7 @@ public class main {
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
                                     }
-                                    else
+                                    if(losowanie<=70)
                                     {
                                         kasa = kasa + projekt.zar[current]-projekt.kara[current];
                                         zarobek = zarobek + projekt.zar[current] / 10;
@@ -1005,7 +1019,7 @@ public class main {
                     System.out.println("Mam "+projektyl+" projektów");
                     System.out.println("Wypłacam "+wypl+" miesięcznie");
 
-                    System.out.println("pracowniksp "+pracowniksp+" "+nieroblicz);
+                    System.out.println("pracowniksp "+pracowniksp+" "+nieroblicz+uko+zaj);
 
                     System.out.println("Front ma  "+progres_front+" na "+ projekt.front[current]);
                     System.out.println("Back ma  "+progres_back+" na "+ projekt.back[current]);
@@ -1617,7 +1631,7 @@ public class main {
             }
 
 
-            //jeżeli duży pracowniksp=3
+
 
         }
 
