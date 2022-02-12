@@ -11,10 +11,8 @@ public class main {
         int pracowniksp=0;
         int nieroblicz= 0;
         int podwyko=0;
-        int wykotim1;
-        int wykotim2;
-        int wykotim3;
-        int wykoid;
+
+        int wykoid=0;
         int timergl;
         boolean uko=false;
         int zarobek=0;
@@ -49,6 +47,7 @@ public class main {
         double progres_mobile;
         double progres_word;
         double progres_pres;
+        int timerpod=-1;
         int wm=500;
         int wa=500;
         int wp=500;
@@ -73,6 +72,7 @@ public class main {
         int tydzid2=-1;
         int miestim=-1;
         int miesid=-1;
+        int timerpro=0;
 
         //losowanie podwykonawców
         int Basia[]={0,0,0,0,0,0};
@@ -307,7 +307,10 @@ public class main {
                 {
                 if(zaj==false) {
                     System.out.println("1-Dla firmy ");
-                    System.out.println("2-Dla podwykonawcy ");
+                    if(wykoid==0)
+                    {
+                        System.out.println("2-Dla podwykonawcy ");
+                    }
                     String jaoni = scan.nextLine();
 
                     if (jaoni.equals("1"))
@@ -422,7 +425,7 @@ public class main {
 
 
                     }
-                    if (jaoni.equals("2"))
+                    if (jaoni.equals("2")&&wykoid==0)
                     {
                         System.out.println("1-Basia najlepsza uczennica-pobiera 75% ");
                         System.out.println("2-Olek Sredni uczeń-pobiera 60%, 10% na buga ");
@@ -432,20 +435,77 @@ public class main {
 
                         if (wykonawca.equals("1"))
                         {
-                             wykotim1=0;
+                             wykoid=1;
                         }
                         if (wykonawca.equals("2"))
                         {
-                             wykotim2=0;
+                            wykoid=2;
                         }
                         if (wykonawca.equals("3"))
                         {
-                             wykotim3=0;
+                            wykoid=3;
                         }
 
 
+                        if(wykoid==1||wykoid==2||wykoid==3)
+                        {
+
+                            if (projekt1 != -1) {
+                                System.out.println("1- " + projekt.nazwa[projekt1]);
+                                System.out.println("Wartość projektu: " + projekt.zar[projekt1]);
+                                System.out.println("Dni na ukończenie " + projekt.dni[projekt1]);
+
+                            }
+                            if (projekt2 != -1) {
+                                System.out.println("2- " + projekt.nazwa[projekt2]);
+                                System.out.println("Wartość projektu: " + projekt.zar[projekt2]);
+                                System.out.println("Dni na ukończenie " + projekt.dni[projekt2]);
+
+                            }
+                            if (projekt3 != -1) {
+                                System.out.println("3- " + projekt.nazwa[projekt3]);
+                                System.out.println("Wartość projektu: " + projekt.zar[projekt3]);
+                                System.out.println("Dni na ukończenie " + projekt.dni[projekt3]);
+
+                            }
+                            if (projekt4 != -1) {
+                                System.out.println("4- " + projekt.nazwa[projekt4]);
+                                System.out.println("Wartość projektu: " + projekt.zar[projekt4]);
+                                System.out.println("Dni na ukończenie " + projekt.dni[projekt4]);
+
+                            }
+                            if (projekt5 != -1) {
+                                System.out.println("5- " + projekt.nazwa[projekt5]);
+                                System.out.println("Wartość projektu: " + projekt.zar[projekt5]);
+                                System.out.println("Dni na ukończenie " + projekt.dni[projekt5]);
+
+                            }
+
+                            String wykonawcapro = scan.nextLine();
 
 
+                            if (wykonawcapro.equals("1") && projekt1 != -1) {
+                                System.out.println("Wybrałeś " + projekt.nazwa[projekt1]);
+                                podwyko = projekt1;
+
+                            }
+                            if (wykonawcapro.equals("2") && projekt2 != -1) {
+                                System.out.println("Wybrałeś " + projekt.nazwa[projekt2]);
+                                podwyko = projekt2;
+                            }
+                            if (wykonawcapro.equals("3") && projekt3 != -1) {
+                                System.out.println("Wybrałeś " + projekt.nazwa[projekt3]);
+                                podwyko = projekt3;
+                            }
+                            if (wykonawcapro.equals("4") && projekt4 != -1) {
+                                System.out.println("Wybrałeś " + projekt.nazwa[projekt4]);
+                                podwyko = projekt4;
+                            }
+                            if (wykonawcapro.equals("5") && projekt5 != -1) {
+                                System.out.println("Wybrałeś " + projekt.nazwa[projekt5]);
+                                podwyko = projekt5;
+                            }
+                        }
                     }
                         }
                 else {
@@ -455,8 +515,12 @@ public class main {
             }
                 else if(czynn.equals("2"))//szukanie klientów
                 {
+                    if(4>=timerpro)
+                    {
+                        System.out.println("Nic nie znalazłeś");
 
-                            if(randomNum>=33)
+                    }
+                            if(timerpro>4)
                             {
 
                                 int randomzna = (int)(Math.random() * 3);
@@ -464,38 +528,40 @@ public class main {
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
                                     projekt1 = randomzna;
+                                    timerpro=0;
                                 }
                                 else if (projekt2==-1)
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
                                     projekt2 = randomzna;
+                                    timerpro=0;
                                 }
                                 else if (projekt3==-1)
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
                                     projekt3 = randomzna;
+                                    timerpro=0;
                                 }
                                 else if (projekt4==-1)
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
                                     projekt4 = randomzna;
+                                    timerpro=0;
                                 }
                                 else if (projekt5==-1)
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
                                     projekt5 = randomzna;
+                                    timerpro=0;
                                 }
                                 else if(projekt1!=-1&&projekt2!=-1&&projekt3!=-1&&projekt4!=-1&&projekt5!=-1)
                                 {
                                     System.out.println("Baza pełna");
                                 }
 
-                            }
-                            if(randomNum<33)
-                            {
-                                System.out.println("Nic nie znalazłeś");
 
                             }
+
 
 
         }
@@ -643,6 +709,17 @@ public class main {
                                 }
                                 if(projekt.klient[current]=="skrwy") {
 
+                                    if(losowanie<70)
+                                    {
+                                        kasa = kasa + projekt.zar[current];
+                                        zarobek = zarobek + projekt.zar[current] / 10;
+                                        System.out.println("Zarobiłeś "+projekt.zar[current]);
+                                        if(projekt.poziom[current]=="duży")
+                                        {
+                                            nieroblicz++;
+                                        }
+                                    }
+
                                     if(losowanie>70&&losowanie<95)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
@@ -664,7 +741,7 @@ public class main {
                                         }
 
                                     }
-                                    if(losowanie>95&&losowanie>100)
+                                    if(losowanie>95&&losowanie<100)
                                     {
                                         System.out.println("Zapłata opóźniona o miesiąc ");
 
@@ -683,6 +760,7 @@ public class main {
                                     {
                                         System.out.println("Może kiedyś ");
                                     }
+
 
                                 }
                             }
@@ -777,6 +855,17 @@ public class main {
                                 }
                                 if(projekt.klient[current]=="skrwy") {
 
+                                    if(losowanie<70)
+                                    {
+                                        kasa = kasa + projekt.zar[current];
+                                        zarobek = zarobek + projekt.zar[current] / 10;
+                                        System.out.println("Zarobiłeś "+projekt.zar[current]);
+                                        if(projekt.poziom[current]=="duży")
+                                        {
+                                            nieroblicz++;
+                                        }
+                                    }
+
                                     if(losowanie>70&&losowanie<95)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
@@ -792,7 +881,7 @@ public class main {
                                             tydzid2=current;
                                         }
                                     }
-                                    if(losowanie>95&&losowanie>100)
+                                    if(losowanie>95&&losowanie<100)
                                     {
                                         System.out.println("Zapłata opóźniona o miesiąc ");
 
@@ -1491,6 +1580,80 @@ public class main {
                 opoz=true;
             }
 
+            //Podwykonawcy
+            int randompodwyko = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            if(wykoid==1)
+            {
+
+                if((timerpod-projekt.dni[podwyko])>=0)
+                {
+                    System.out.println("Dostałeś należność po odjęciu kosztu podwykonawcy ");
+                    kasa=kasa+(projekt.zar[podwyko]-(3*(projekt.zar[podwyko]/4)));
+                    wykoid=0;
+                    timerpod=0;
+                }
+                else
+                {
+                    timerpod++;
+                }
+
+            }
+            if(wykoid==2)
+            {
+
+                if((timerpod-projekt.dni[podwyko])>=0)
+                {
+                    if(randompodwyko==10)
+                    {
+                        System.out.println("Były bugi, nie dostałeś kasy ");
+                        wykoid = 0;
+                        timerpod = 0;
+                    }
+                    else {
+                        System.out.println("Dostałeś należność po odjęciu kosztu podwykonawcy ");
+                        kasa = kasa + (projekt.zar[podwyko] - (3 * (projekt.zar[podwyko] / 5)));
+                        wykoid = 0;
+                        timerpod = 0;
+                    }
+                }
+                else
+                {
+                    timerpod++;
+                }
+
+            }
+            if(wykoid==3)
+            {
+
+                if((timerpod-projekt.dni[podwyko])>=0)
+                {
+                    if(randompodwyko>8)
+                    {
+                        System.out.println("Były bugi, nie dostałeś kasy ");
+                        wykoid = 0;
+                        timerpod = 0;
+                    }
+                    if(randompodwyko<9&&randompodwyko>6)
+                    {
+                        System.out.println("Dostałeś należność po odjęciu kosztu podwykonawcy (podwykonawca się spóżnił)");
+                        kasa = kasa + ((projekt.zar[podwyko]-projekt.kara[podwyko]) - ((projekt.zar[podwyko]-projekt.kara[podwyko]) / 2));
+                        wykoid = 0;
+                        timerpod = 0;
+                    }
+                    else {
+                        System.out.println("Dostałeś należność po odjęciu kosztu podwykonawcy ");
+                        kasa = kasa + (projekt.zar[podwyko] - (3 * (projekt.zar[podwyko] / 5)));
+                        wykoid = 0;
+                        timerpod = 0;
+                    }
+                }
+                else
+                {
+                    timerpod++;
+                }
+
+            }
+
 
            //dzien tyg
             dzien++;
@@ -1806,6 +1969,12 @@ public class main {
                 break;
             }
 
+
+            //5 dni do nowego projektu
+            if(timerpro<6)
+            {
+                timerpro++;
+            }
 
 
 
