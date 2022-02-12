@@ -554,7 +554,7 @@ public class main {
                             if(timerpro>4)
                             {
 
-                                int randomzna = (int)(Math.random() * 3);
+                                int randomzna = (int)(Math.random() * 16);
                                 if(projekt1==-1)
                                 {
                                     System.out.println("Znalażłeś "+projekt.nazwa[randomzna]+" rozmiar: "+projekt.poziom[randomzna]);
