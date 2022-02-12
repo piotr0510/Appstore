@@ -11,7 +11,6 @@ public class main {
         int pracowniksp=0;
         int nieroblicz= 0;
         int podwyko=0;
-
         int wykoid=0;
         int timergl;
         boolean uko=false;
@@ -54,6 +53,7 @@ public class main {
         int wg=500;
         int dzien=1;
         boolean oddanie=false;
+        boolean zakonczenie=false;
         int projekt1=-1;
         int projekt2=-1;
         int projekt3=-1;
@@ -97,10 +97,40 @@ public class main {
 
 
         //wybór projektu
-        int randomNum1 = (int)(Math.random() * 3);
-        int randomNum2 = (int)(Math.random() * 3);
-        int randomNum3 = (int)(Math.random() * 3);
+        int randomNum1 = (int)(Math.random() * 6);
+        int randomNum2 = (int)(Math.random() * 6);
+        int randomNum3 = (int)(Math.random() * 6);
 
+        if(randomNum2==randomNum1)
+        {
+            if(randomNum1!=5)
+            {
+                randomNum2=randomNum1+1;
+            }
+            else
+            {
+                randomNum2=randomNum1-1;
+            }
+        }
+        if(randomNum3==randomNum2||randomNum3==randomNum1-1)
+        {
+            if(randomNum1!=5&&randomNum2!=5)
+            {
+                randomNum3=5;
+            }
+            if(randomNum1==5&&randomNum2!=5)
+            {
+                if(randomNum2!=4)
+                {
+                    randomNum3=randomNum3+1;
+                }
+                else
+                {
+                    randomNum3=randomNum3-1;
+                }
+
+            }
+        }
 
         System.out.println("Wybierz projekt:");
 
@@ -315,6 +345,7 @@ public class main {
 
                     if (jaoni.equals("1"))
                     {
+                        zakonczenie=false;
                         opoz=false;
                         System.out.println("Wybierz projekt");
 
@@ -635,6 +666,7 @@ public class main {
                     {
                         zaj = false;
                         oddanie=true;
+                        zakonczenie=true;
 
                         int losowanie = (int)(Math.random() * 101);
                         if(opoz==false)
@@ -1413,13 +1445,16 @@ public class main {
             progres_pres <=0
             )
             {
-
-                uko=true;
-                System.out.println("Projekt ukończony");
-                if(randomurl1>75)
+                if(zakonczenie==false)
                 {
-                    bug=true;
+                    uko=true;
+                    System.out.println("Projekt ukończony");
+                    if(randomurl1>75)
+                    {
+                        bug=true;
+                    }
                 }
+
             }
 
             //sprzedawcy
