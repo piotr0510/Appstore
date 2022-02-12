@@ -14,6 +14,7 @@ public class main {
         int wykotim1;
         int wykotim2;
         int wykotim3;
+        int wykoid;
         int timergl;
         boolean uko=false;
         int zarobek=0;
@@ -48,13 +49,11 @@ public class main {
         double progres_mobile;
         double progres_word;
         double progres_pres;
-        boolean zrobione=false;
         int wm=500;
         int wa=500;
         int wp=500;
         int wg=500;
         int dzien=1;
-        int timer_ogl=0;
         boolean oddanie=false;
         int projekt1=-1;
         int projekt2=-1;
@@ -68,12 +67,17 @@ public class main {
         boolean znapro3= false;
         boolean znapro4= false;
         boolean znapro5= false;
+        int tydztim1=-1;
+        int tydzid1=-1;
+        int tydztim2=-1;
+        int tydzid2=-1;
+        int miestim=-1;
+        int miesid=-1;
 
         //losowanie podwykonawców
         int Basia[]={0,0,0,0,0,0};
         int Olek[]={0,0,0,0,0,0};
         int Kacper[]={0,0,0,0,0,0};
-        int licznik=0;
         for(int i=0;i<6;i++)
         {
             int los1 = ThreadLocalRandom.current().nextInt(150, 350 + 1);
@@ -299,7 +303,7 @@ public class main {
             {
                 ex=1;
             }
-                else if(czynn.equals("1"))//nowy projekt
+                else if(czynn.equals("1"))//nowy projekt+ podwykonawcy
                 {
                 if(zaj==false) {
                     System.out.println("1-Dla firmy ");
@@ -575,6 +579,19 @@ public class main {
                                 if(losowanie>70)
                                 {
                                     System.out.println("Zapłata opóźniona o tydzień ");
+
+                                    if(tydztim1==0)
+                                    {
+                                        tydztim1=7;
+                                        tydzid1=current;
+                                    }
+                                    if(tydztim2==0)
+                                    {
+                                        tydztim2=7;
+                                        tydzid2=current;
+                                    }
+
+
                                     if(projekt.poziom[current]=="duży")
                                     {
                                         nieroblicz++;
@@ -629,6 +646,18 @@ public class main {
                                     if(losowanie>70&&losowanie<95)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
+
+                                        if(tydztim1==0)
+                                        {
+                                            tydztim1=8;
+                                            tydzid1=current;
+                                        }
+                                        if(tydztim2==0)
+                                        {
+                                            tydztim2=8;
+                                            tydzid2=current;
+                                        }
+
                                         if(projekt.poziom[current]=="duży")
                                         {
                                             nieroblicz++;
@@ -638,6 +667,13 @@ public class main {
                                     if(losowanie>95&&losowanie>100)
                                     {
                                         System.out.println("Zapłata opóźniona o miesiąc ");
+
+                                        if(miestim==0)
+                                        {
+                                            miestim=30;
+                                            miesid=current;
+                                        }
+
                                         if(projekt.poziom[current]=="duży")
                                         {
                                             nieroblicz++;
@@ -662,6 +698,17 @@ public class main {
                                     if(losowanie>70)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
+
+                                        if(tydztim1==0)
+                                        {
+                                            tydztim1=7;
+                                            tydzid1=current;
+                                        }
+                                        if(tydztim2==0)
+                                        {
+                                            tydztim2=7;
+                                            tydzid2=current;
+                                        }
                                     }
                                     if(losowanie<=70)
                                     {
@@ -680,6 +727,17 @@ public class main {
                                     if(losowanie>70)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
+
+                                        if(tydztim1==0)
+                                        {
+                                            tydztim1=7;
+                                            tydzid1=current;
+                                        }
+                                        if(tydztim2==0)
+                                        {
+                                            tydztim2=7;
+                                            tydzid2=current;
+                                        }
                                     }
                                     if(losowanie<=70)
                                     {
@@ -722,10 +780,27 @@ public class main {
                                     if(losowanie>70&&losowanie<95)
                                     {
                                         System.out.println("Zapłata opóźniona o tydzień ");
+
+                                        if(tydztim1==0)
+                                        {
+                                            tydztim1=7;
+                                            tydzid1=current;
+                                        }
+                                        if(tydztim2==0)
+                                        {
+                                            tydztim2=7;
+                                            tydzid2=current;
+                                        }
                                     }
                                     if(losowanie>95&&losowanie>100)
                                     {
                                         System.out.println("Zapłata opóźniona o miesiąc ");
+
+                                        if(miestim==0)
+                                        {
+                                            miestim=30;
+                                            miesid=current;
+                                        }
                                     }
                                     if(losowanie==100)
                                     {
@@ -735,7 +810,7 @@ public class main {
                                 }
                             }
                         }
-                        zrobione=true;
+
                         opoz=false;
                     }
                     if(uko==false&&zaj == true)
@@ -1424,6 +1499,35 @@ public class main {
             if(dztyg==8)
             {
                 dztyg=1;
+            }
+
+            //opóźnione opłaty
+            if(tydztim1==0)
+            {
+                System.out.println("Dostałeś opóźnioną opłatę ");
+                kasa=kasa+projekt.zar[tydzid1];
+            }
+            if(tydztim1>=0)
+            {
+                tydztim1--;
+            }
+            if(tydztim2==0)
+            {
+                System.out.println("Dostałeś opóźnioną opłatę ");
+                kasa=kasa+projekt.zar[tydzid2];
+            }
+            if(tydztim2>=0)
+            {
+                tydztim2--;
+            }
+            if(miestim==0)
+            {
+                System.out.println("Dostałeś opóźnioną opłatę ");
+                kasa=kasa+projekt.zar[miesid];
+            }
+            if(miestim>=0)
+            {
+                miestim--;
             }
 
             // zmiana miesiąca + zus + opłaty
